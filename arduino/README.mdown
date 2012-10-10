@@ -1,0 +1,34 @@
+What's this?
+==
+This is the Arduino-side code base for the DeskAttendant project.
+
+How to use this code
+==
+In order to use DeskAttendant on your Arduino,
+
+1. Exit any instances of the Arduino IDE that you are currently running.
+
+2. Copy the contents of this `arduino` directory to your Arduino workspace directory. For example:
+
+    `/bin/cp -pr /path/to/desk_attendant/arduino/* ~/sketchbook/`
+
+3. Download NewPing v1.4 at <http://code.google.com/p/arduino-new-ping/downloads/list>
+
+4. Uncompress NewPing v1.4, and copy the top-level NewPing directory to your Arduino IDE's library directory. For example:
+
+    `/bin/cp -pr /path/to/NewPing ~/sketchbook/libraries/`
+
+5. See `doc/PARTS_LIST.mdown` for the full project parts list.
+
+6. TODO: Wiring diagram
+
+
+Limitations and caveats
+==
+* I have only tested this project with Arduino IDE v1.0.0 on 64-bit Ubuntu 12.04 and NewPing v1.4, although any platform that supports Arduino IDE v1.0.0 should work, and newer versions of the Arduino IDE and NewPing may work.
+
+* I have only tested this project with an Arduino Duemilanove, although any newer Arduino should work.
+
+* This project is tailored to a specific use case, specifically automating the starting and stopping of a Sole F85 treadmill, based on walker presence.
+
+* This project is tailored to a specific class of hardware, specifically Arduino-compatible distance sensors and actuators.

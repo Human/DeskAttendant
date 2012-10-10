@@ -1,0 +1,24 @@
+What's this?
+==
+This is an Ubuntu-compatible daemon that listens for status changes from the Arduino and invokes the project's Sikuli script when appropriate.
+
+The Ubuntu daemon monitors the serial port of the attached Arduino for status information.  When it sees that there has been an actionable status change (from "human present" to "human absent" or from "human absent" to "human present"), it launches one of the bundled Sikuli scripts to set desktop software to the appropriate run mode.
+
+For example, if the daemon sees status going from "human present" to "human absent" it will launch the Sikuli script that pauses activities such as time tracking and music playing.
+
+Invocation
+==
+`desk_attendant.sh -p [port]`
+
+e.g.
+
+`desk_attendant.sh -p /dev/ttyUSB0`
+
+Required Packages
+==
+The daemon doesn't need non-baseline packages. You should already have what you need.
+
+Other OSes
+==
+On OSX, you may be able to use the scripting as provided, after installing the necessary packages. (Please let me know.) On Windows, you're unfortunately on your own, but I'll incorporate your code and documentation if you make it work in Windows.
+

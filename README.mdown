@@ -1,0 +1,19 @@
+What's this?
+==
+This is DeskAttendant, a real-world automation project using Arduino and Sikuli.
+
+DeskAttendant
+==
+Copyright 2012 Robert W Igo (bob@igo.name, http://bob.igo.name, http://www.linkedin.com/profile/view?id=22294307)
+
+Purpose
+==
+This project automates some functions of my workspace, which includes a treadmill desk and A/V receiver.
+
+When I get on my treadmill desk, servos turn on my treadmill and A/V receiver, and a relay fires to turn on a cooling fan. A script on the desktop sees this and resumes several ongoing applications.
+
+When I step off the treadmill desk, servos pause my treadmill and turn off my A/V receiver, and a relay shuts off to turn off a cooling fan. A script on the desktop sees this and pauses several ongoing applications.
+
+To learn more about the Arduino side of this, please look in the `arduino` directory under this one.
+
+To learn more about the desktop side of this, please look in the `desktop_software` directory under this one.
