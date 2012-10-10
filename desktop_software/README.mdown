@@ -1,0 +1,13 @@
+What's this?
+==
+This is the Desktop-side code base for the DeskAttendant project.
+
+Specifics
+--
+The daemon listens to the serial port where the Arduino is attached and will invoke the Sikuli script if the Arduino says to. Combined, the two sets of code mirror on the desktop the pause/run state that the Arduino is in at the time.
+
+How to use this code
+==
+* To learn how to install and use the daemon, see `ubuntu/README.mdown`
+
+* To learn how to install and use the Sikuli script, see `sikuli/README.mdown`

@@ -1,0 +1,20 @@
+What's this?
+==
+This is a Sikuli script for pausing/unpausing specific desktop apps.
+
+Limitations
+==
+* Developed and tested on an Ubuntu 12.04 box running Unity at 1920x1080 resolution, with a top-side panel 32 pixels high.
+* Only three applications were tested, and all create a presence in the top-side panel when running.
+
+Invocation
+==
+`sikuli-ide -r ./path/to/deskattendnant.sikuli -args --[pause|unpause]`
+
+e.g.
+
+`sikuli-ide -r ./deskattendnant.sikuli -args --pause`
+
+or
+
+`sikuli-ide -r ./deskattendnant.sikuli -args --unpause`

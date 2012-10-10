@@ -1,0 +1,47 @@
+Minimum components necessary for the Desk Attendant Arduino project
+==
+
+* 1x Arduino Uno R3: http://amzn.com/B006H06TVG (A Duemilanove will work, too.)
+* 3x ROB-09064 large servos: https://www.sparkfun.com/products/9064
+* 1x COM-10747 powerswitch tail 2: https://www.sparkfun.com/products/10747
+* 1x HY-SRF05 ultrasonic distance sensor: http://amzn.com/B0086U0ID0
+* 1x COM-09336 red concave button: https://www.sparkfun.com/products/9336
+* 1x COM-09341 green concave button: https://www.sparkfun.com/products/9341
+* 1x 4-position Arduino-compatible terminal block kit (includes 10 blocks): http://shop.moderndevice.com/products/copy-of-terminal-block-100-inch-2-54mm-pitch-2-position
+* 1x solderless breadboard: http://dx.com/p/solderless-breadboard-with-400-tie-point-white-121534?item=4
+* LED sample pack with resistors: http://amzn.com/B004UZDFPI
+
+  OR
+
+  * 1x red LED
+  * 1x green LED
+  * 1x blue LED
+  * 3x 200 Ohm resistors
+
+
+* jumper wire kit: http://dx.com/p/breadboard-jumper-wires-for-electronic-diy-70-cable-pack-80208?item=1
+
+  OR
+
+  * your own collection of 22AWG wires
+
+
+Recommended changes and additions
+==
+
+* 1x Arduino screw shield: http://amzn.com/B007BKDGAI (replaces the terminal block kit above)
+* 1x break-away header pins: https://www.sparkfun.com/products/116 (3 pins interface to each servo cable)
+* 2x headers: https://www.sparkfun.com/products/9280 (useful for positioning the sonic distance sensor)
+* 4x USB extender cables: http://www.monoprice.com/products/product.asp?c_id=103&cp_id=10303&cs_id=1030304&p_id=8606&seq=1&format=2 (for use as quick connects)
+* 1x heat-shrink tubing kit: http://amzn.com/B000F7RB4Q (neatens cable ends)
+* 1x solderable breadboard: http://amzn.com/B0040Z3012 (replaces the solderless breadboard)
+
+
+General sources for components:
+==
+
+* https://www.sparkfun.com/
+* https://www.adafruit.com/
+* http://shop.moderndevice.com/
+* http://dx.com/
+* http://amzn.com/
