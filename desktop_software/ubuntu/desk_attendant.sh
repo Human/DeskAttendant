@@ -43,7 +43,7 @@ fi
 
 # NOTE: The paths used (or omitted) here must be compatible with your Sikuli installation and
 # with the location where you installed the deskattendant.sikuli directory.
-sikuli_base_cmd="sikuli-ide -r /repos/desk_attendant/desktop_software/sikuli/deskattendant.sikuli -args"
+sikuli_base_cmd="sikuli-ide -r /repos/DeskAttendant/desktop_software/sikuli/deskattendant.sikuli -args"
 
 # NOTE: These must all match the Arduino sketch.
 baud=9600
