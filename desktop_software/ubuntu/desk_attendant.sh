@@ -45,8 +45,8 @@ fi
 baud=9600
 
 # First, set the appropriate serial port to the appropriate baud rate.
-# NOTE: This tends to restart the Arduino, so if it was suspended, this may unsuspend it.
-stty -F $port raw ispeed $baud ospeed $baud time 3 min 1
+# NOTE: This restarts the Arduino on the _first_ invocation. Subsequent invocations will not.
+stty -F $port raw ispeed $baud ospeed $baud time 3 min 1 -hupcl
 
 # NOTE: The paths used (or omitted) here must be compatible with your Sikuli installation and
 # with the location where you installed the deskattendant.sikuli directory.
