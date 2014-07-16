@@ -1,4 +1,4 @@
-# Copyright 2012 Robert W Igo
+# Copyright 2012,2014 Robert W Igo
 #
 # bob@igo.name
 # http://bob.igo.name
@@ -59,6 +59,22 @@ def get_name_for_state(x):
 # put these apps into the right mode
 #
 def take_action(mode):
+    # First, make sure the desktop is unlocked by looking for the "power" icon.
+    print("Is the desktop unlocked?")
+    unlocked=False
+    setROI(1812,0,148,48)
+    for i in range(0, 30):
+        try:
+            power = wait("powerbutton.png", 1)
+            unlocked=True
+            print(" yes")
+            break
+        except FindFailed:
+            pass
+    if unlocked == False:
+        print(" no; we can't toggle apps to " + mode)
+        return
+    
     for app in ["amarok", "pithos", "hamster"]:
         print("is " + app + " running?")
         try:
@@ -67,7 +83,7 @@ def take_action(mode):
             # The app icons live in the tray at the top of the window.
             setROI(1045,0,550,32)
             icon = wait(app+"trayicon.png", 1)
-            print(mode + " " + app)
+            print(" " + mode + " " + app)
             button = Pattern(app+mode+"button.png").similar(0.86)
             rightClick(icon)
             try:
@@ -76,7 +92,7 @@ def take_action(mode):
                 target = wait(button, 1)
                 click(target)
             except FindFailed:
-                print("found no " + mode + " button")
+                print(" found no " + mode + " button")
                 rightClick(icon)
         except FindFailed:
             pass
@@ -97,9 +113,9 @@ print("Desk Attendant is ready on serial port " + port)
 Settings.MoveMouseDelay = 0
 
 #
-# Read from 'port' forever.
+# Read from 'port' as long as it exists.
 #
-while True:
+while os.path.exists(port):
     for line in os.read(ser,1):
         try:
             this_status = int(line)
