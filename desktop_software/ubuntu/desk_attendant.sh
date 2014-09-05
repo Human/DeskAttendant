@@ -23,7 +23,7 @@
 
 Usage() {
     echo "USAGE:"
-    echo `basename $0` "-p [port]"
+    echo `basename $0` "[-p port]"
     echo "-p: Serial port where your Arduino is attached"
     echo "e.g."
     echo "$0 -p /dev/ttyUSB0"
@@ -36,6 +36,12 @@ while getopts "p:" FLAG ; do
 	*) Usage;;
     esac
 done
+
+# Try to auto-determine the port. This makes a big assumption that only one FTDI serial device
+# converter is attached via USB and that it's our Arduino.
+if [ "$port" == "" ]; then
+    port="/dev/"`grep 'FTDI USB Serial Device converter now attached to' /var/log/kern.log | tail -1 | awk -F 'now attached to ' '{print $2}'`
+fi
 
 if [ "$port" == "" ]; then
     Usage

@@ -84,7 +84,7 @@ def take_action(mode):
             setROI(1045,0,550,32)
             icon = wait(app+"trayicon.png", 1)
             print(" " + mode + " " + app)
-            button = Pattern(app+mode+"button.png").similar(0.86)
+            button = Pattern(app+mode+"button.png").similar(0.76)
             rightClick(icon)
             try:
                 # The popup menu goes lower than the top tray.
