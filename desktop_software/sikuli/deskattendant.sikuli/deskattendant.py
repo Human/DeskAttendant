@@ -65,7 +65,7 @@ def take_action(mode):
     setROI(1812,0,148,48)
     for i in range(0, 30):
         try:
-            power = wait("powerbutton.png", 1)
+            power = wait("powerbutton.png", 15)
             unlocked=True
             print(" yes")
             break
@@ -88,7 +88,7 @@ def take_action(mode):
             rightClick(icon)
             try:
                 # The popup menu goes lower than the top tray.
-                setROI(1045,0,550,326)
+                setROI(1045,0,700,200)
                 target = wait(button, 1)
                 click(target)
             except FindFailed:
