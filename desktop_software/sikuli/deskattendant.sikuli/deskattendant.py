@@ -62,10 +62,10 @@ def take_action(mode):
     # First, make sure the desktop is unlocked by looking for the "power" icon.
     print("Is the desktop unlocked?")
     unlocked=False
-    setROI(1812,0,148,48)
+    setRect(1812,0,148,48)
     for i in range(0, 30):
         try:
-            power = wait("powerbutton.png", 15)
+            power = wait("powerbutton.png", 1)
             unlocked=True
             print(" yes")
             break
@@ -81,14 +81,14 @@ def take_action(mode):
             # If app is running, pause it
             
             # The app icons live in the tray at the top of the window.
-            setROI(1045,0,550,32)
-            icon = wait(app+"trayicon.png", 1)
+            setRect(1045,0,550,32)
+            icon = wait(Pattern(app+"trayicon.png").similar(0.85), 1)
             print(" " + mode + " " + app)
             button = Pattern(app+mode+"button.png").similar(0.76)
             rightClick(icon)
             try:
                 # The popup menu goes lower than the top tray.
-                setROI(1045,0,700,200)
+                setRect(1045,0,700,200)
                 target = wait(button, 1)
                 click(target)
             except FindFailed:
