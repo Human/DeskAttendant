@@ -56,4 +56,5 @@ stty -F $port raw ispeed $baud ospeed $baud time 3 min 1 -hupcl
 
 # NOTE: The paths used (or omitted) here must be compatible with your Sikuli installation and
 # with the location where you installed the deskattendant.sikuli directory.
-sikuli-ide -r /repos/DeskAttendant/desktop_software/sikuli/deskattendant.sikuli -args $port
+#sikuli-ide -r /repos/DeskAttendant/desktop_software/sikuli/deskattendant.sikuli -args $port
+python /repos/DeskAttendant/desktop_software/ubuntu/desk_attendant.py $port
