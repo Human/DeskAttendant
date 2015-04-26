@@ -4,7 +4,7 @@ This is the Desktop-side code base for the DeskAttendant project.
 
 Specifics
 --
-The daemon listens to the serial port where the Arduino is attached and will invoke the Sikuli script if the Arduino says to. Combined, the two sets of code mirror on the desktop the pause/run state that the Arduino is in at the time.
+The shell script preps the given USB port and launches the python script. The python script listens to the serial port where the Arduino is attached and will apply changes to the three tracked applications, if they are running. In visual mode, a python script uses Sikuli to interact with applications via the GUI. In CLI mode, a different python script controls applications via shell commands. The end result is that the desktop applications are made to mirror the pause/run state that the Arduino is in at the time.
 
 How to use this code
 ==

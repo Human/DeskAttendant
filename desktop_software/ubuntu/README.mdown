@@ -1,14 +1,16 @@
 What's this?
 ==
-This is an Ubuntu-compatible daemon that listens for status changes from the Arduino and invokes the project's Sikuli script when appropriate.
+desk_attendant.sh is a launcher for a python script that listens for status changes from the Arduino and applies those changes to tracked desktop apps as needed. If passed an optional '-v' argument, the python script called will use Sikuli to interact with the desktop apps via their GUIs. If omitted, the interaction is done via shell commands.
 
-The Ubuntu daemon monitors the serial port of the attached Arduino for status information.  When it sees that there has been an actionable status change (from "human present" to "human absent" or from "human absent" to "human present"), it launches one of the bundled Sikuli scripts to set desktop software to the appropriate run mode.
+desk_attendant.py applies status changes via shell commands. It monitors the serial port of the attached Arduino for status information.  When it sees that there has been an actionable status change (from "human present" to "human absent" or from "human absent" to "human present"), it invokes shell commands to set the tracked desktop applications (if running) to the appropriate run mode.
 
-For example, if the daemon sees status going from "human present" to "human absent" it will launch the Sikuli script that pauses activities such as time tracking and music playing.
+deskattendant.sikuli/deskattendant.py applies status changes via Sikuli, using openCV to detect click targets and using Sikuli libraries to click them.
+
+For example, if the daemon sees status going from "human present" to "human absent" it will pause activities such as time tracking and music playing.
 
 Invocation
 ==
-`desk_attendant.sh -p [port]`
+`desk_attendant.sh -p PORT`
 
 e.g.
 

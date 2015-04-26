@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright 2012-2014 Robert W Igo
+# Copyright 2012-2015 Robert W Igo
 #
 # bob@igo.name
 # http://bob.igo.name
@@ -23,16 +23,18 @@
 
 Usage() {
     echo "USAGE:"
-    echo `basename $0` "[-p port]"
+    echo `basename $0` "-p PORT [-v]"
     echo "-p: Serial port where your Arduino is attached"
+    echo "-v: interact with apps visually (using Sikuli); otherwise use CLI mode"
     echo "e.g."
     echo "$0 -p /dev/ttyUSB0"
     exit 4
 }
 
-while getopts "p:" FLAG ; do
+while getopts "p:v:" FLAG ; do
     case "$FLAG" in
 	p) port="$OPTARG";;
+	v) mode="visual";;
 	*) Usage;;
     esac
 done
@@ -56,5 +58,8 @@ stty -F $port raw ispeed $baud ospeed $baud time 3 min 1 -hupcl
 
 # NOTE: The paths used (or omitted) here must be compatible with your Sikuli installation and
 # with the location where you installed the deskattendant.sikuli directory.
-#sikuli-ide -r /repos/DeskAttendant/desktop_software/sikuli/deskattendant.sikuli -args $port
-python /repos/DeskAttendant/desktop_software/ubuntu/desk_attendant.py $port
+if [ "$mode" == "visual" ]; then
+    sikuli-ide -r /repos/DeskAttendant/desktop_software/sikuli/deskattendant.sikuli -args $port
+else
+    python /repos/DeskAttendant/desktop_software/ubuntu/desk_attendant.py $port
+fi
