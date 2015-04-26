@@ -57,13 +57,13 @@ const int STOP_button_servo_pin = 10;
 const int servo_starting_angle = 0;
 
 // the START button's servo moves to this angle and back to servo_starting_angle
-const int START_servo_target_angle = 10;
+const int START_servo_target_angle = 20;
 
 // the STOP button's servo moves to this angle and back to servo_starting_angle
-const int STOP_servo_target_angle = 8;
+const int STOP_servo_target_angle = 26;
 
 // for each degree moved, wait this many ms to ensure that the servo actually reaches the target position
-const int ms_per_degree_delay = 12;
+const int ms_per_degree_delay = 6;
 
 const int START_servo_delay = ms_per_degree_delay * (START_servo_target_angle - servo_starting_angle);
 const int STOP_servo_delay = ms_per_degree_delay * (STOP_servo_target_angle - servo_starting_angle);

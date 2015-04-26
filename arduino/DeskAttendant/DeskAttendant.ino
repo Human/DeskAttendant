@@ -74,7 +74,6 @@ unsigned long turned_on_at = 0L;
  Button pressers press the momentary switches on the treadmill and the A/V receiver.
  */
 boolean take_action = true; // affect the treadmill, press buttons, and fire relays if true; otherwise just change status LEDs
-ButtonPresser receiver_power("RECEIVER POWER", receiver_button_servo_pin, receiver_servo_delay, receiver_servo_starting_angle, receiver_servo_target_angle);
 
 /*
  Treadmill and subclasses let you control a treadmill by turning it on or off.
@@ -154,11 +153,6 @@ void status_communication_setup() {
   rgb_blink();
 }
 
-// Initialize the ButtonPresser for the A/V receiver.
-void button_presser_setup() {
-  receiver_power.setup();
-}
-
 // Prepare the fan relay to be controlled by pin fan_relay_pin.
 void fan_relay_setup() {
   // this pin can throw the relay that lets power go to the fan
@@ -183,7 +177,6 @@ void setup() {
   // If we're configured to act on changes in walker status, initialize the A/V receiver's button presser
   // and set up the Treadmill object for use.
   if (take_action) {
-    button_presser_setup();
 
     // Prepare the fan relay to be controlled by pin fan_relay_pin.
     fan_relay_setup();
@@ -299,7 +292,6 @@ void process_status_loop() {
           Serial.println(on);
         }
         if ((*treadmill).set_state(on)) { // this may or may not succeed due to the underlying hardware
-          receiver_power.toggle_button();
           set_fan_relay(on);
           status = new_status;
           turned_on_at = millis();
