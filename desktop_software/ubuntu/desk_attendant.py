@@ -1,4 +1,4 @@
-# Copyright 2012,2014,2015 Robert W Igo
+# Copyright 2012-2017 Robert W Igo
 #
 # bob@igo.name
 # http://bob.igo.name
@@ -19,8 +19,7 @@
 # You should have received a copy of the GNU General Public License
 # along with DeskAttendant.  If not, see <http:#www.gnu.org/licenses/>.
 
-import sys, os, datetime
-import subprocess
+import sys, os, datetime, subprocess, urllib2
 from subprocess import call
 
 # NOTE: These must all match the Arduino sketch.
@@ -53,12 +52,15 @@ def get_name_for_state(x):
         2: 'unpause',
     }[x]
 
+def _inform_openhab(state):
+    try:
+        urllib2.urlopen("http://openhab.igo:8080/CMD?Treadmill_Desk_Active=" + state)
+    except urllib2.URLError:
+        pass
 #
 # put these apps into the right mode
 #
 def take_action(mode):
-    # First, make sure the desktop is unlocked by looking for the "power" icon.
-
     app2 = []
     for app in ["amarok", "pithos", "hamster"]:
         cmd1 = "pgrep " + app
@@ -116,6 +118,12 @@ def take_action(mode):
         # set the state
         p = subprocess.Popen(cmd, shell=True, executable="/bin/bash", stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out,err = p.communicate()
+
+    # finally, inform OpenHAB that the treadmill is becoming active or inactive (based on mode)
+    if mode == "pause":
+        _inform_openhab("OFF")
+    else:
+        _inform_openhab("ON")
 
     print "----"
 
