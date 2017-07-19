@@ -96,14 +96,15 @@ def take_action(mode):
                 p = subprocess.Popen(cmd1, shell=True, executable="/bin/bash", stdout=subprocess.PIPE)
                 out,err = p.communicate()
                 task = out.strip()
-                
-                cmd2 = "notify-send \"resuming task: " + task + "\""
-                p = subprocess.Popen(cmd2, shell=True, executable="/bin/bash", stdout=subprocess.PIPE)
-                out,err = p.communicate()
 
-                # start the last-used task
-                cmd = "hamster-cli start " + task
-                subprocess.Popen(cmd, shell=True, executable="/bin/bash")
+                if task is not "":
+                    cmd2 = "notify-send \"resuming task: " + task + "\""
+                    p = subprocess.Popen(cmd2, shell=True, executable="/bin/bash", stdout=subprocess.PIPE)
+                    out,err = p.communicate()
+
+                    # start the last-used task
+                    cmd = "hamster-cli start " + task
+                    subprocess.Popen(cmd, shell=True, executable="/bin/bash")
 
         elif app == "pithos":
             # figure out what pithos is doing
