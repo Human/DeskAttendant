@@ -61,6 +61,7 @@ def _inform_openhab(state):
 # put these apps into the right mode
 #
 def take_action(mode):
+    cmd = None
     app2 = []
     for app in ["amarok", "pithos", "hamster"]:
         cmd1 = "pgrep " + app
@@ -115,10 +116,11 @@ def take_action(mode):
             if (playing == "true" and mode == "pause") or (playing == "false" and mode == "unpause"):
                 cmd = "dbus-send --print-reply --dest=net.kevinmehall.Pithos /net/kevinmehall/Pithos net.kevinmehall.Pithos.PlayPause"
 
-        #print "   INVOKING: " + cmd
-        # set the state
-        p = subprocess.Popen(cmd, shell=True, executable="/bin/bash", stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        out,err = p.communicate()
+        if cmd is not None:
+            #print "   INVOKING: " + cmd
+            # set the state
+            p = subprocess.Popen(cmd, shell=True, executable="/bin/bash", stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            out,err = p.communicate()
 
     # finally, inform OpenHAB that the treadmill is becoming active or inactive (based on mode)
     if mode == "pause":
