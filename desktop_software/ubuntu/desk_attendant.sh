@@ -42,6 +42,10 @@ done
 # Try to auto-determine the port. This makes a big assumption that only one FTDI serial device
 # converter is attached via USB and that it's our Arduino.
 if [ "$port" == "" ]; then
+    port=`ls -1 /dev/serial/by-id/*FTDI* | head -1`
+fi
+
+if [ "$port" == "" ]; then
     port="/dev/"`grep -a 'FTDI USB Serial Device converter now attached to' /var/log/kern.log | tail -1 | awk -F 'now attached to ' '{print $2}'`
 fi
 
@@ -61,5 +65,5 @@ stty -F $port raw ispeed $baud ospeed $baud time 3 min 1 -hupcl
 if [ "$mode" == "visual" ]; then
     sikuli-ide -r /repos/DeskAttendant/desktop_software/sikuli/deskattendant.sikuli -args $port
 else
-    python /repos/DeskAttendant/desktop_software/ubuntu/desk_attendant.py $port
+    python3 /repos/DeskAttendant/desktop_software/ubuntu/desk_attendant.py $port
 fi
