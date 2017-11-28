@@ -131,8 +131,10 @@ def take_action(mode):
     # finally, inform OpenHAB that the treadmill is becoming active or inactive (based on mode)
     if mode == "pause":
         updater.updateOpenhab("http://openhab.igo:8080/CMD", {"Treadmill_Desk_Active": "OFF"})
+        updater.updateHASS("http://hass.igo:8123/api/states/", "binary_sensor.treadmill_desk_active", {"state": "off"})
     else:
         updater.updateOpenhab("http://openhab.igo:8080/CMD", {"Treadmill_Desk_Active": "ON"})
+        updater.updateHASS("http://hass.igo:8123/api/states/", "binary_sensor.treadmill_desk_active", {"state": "on"})
 
     print("----")
 
